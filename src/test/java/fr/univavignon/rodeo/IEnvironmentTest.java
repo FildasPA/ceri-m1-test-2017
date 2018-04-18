@@ -2,7 +2,7 @@ package fr.univavignon.rodeo;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.*;
@@ -14,7 +14,8 @@ public class IEnvironmentTest {
 
 	private IEnvironment environment;
 
-	private static List<ISpecie> species;
+	private static List<ISpecie> species = Arrays.asList(new ISpecieTest().getTestInstance(),
+			new ISpecieTest().getTestInstance());
 
 	protected IEnvironment getTestInstance() {
 		IEnvironment mock = Mockito.mock(IEnvironment.class);
@@ -27,10 +28,6 @@ public class IEnvironmentTest {
 
 	@Before
 	public void setUp() {
-		species = new ArrayList<ISpecie>();
-		species.add(new ISpecieTest().getTestInstance());
-		species.add(new ISpecieTest().getTestInstance());
-
 		environment = getTestInstance();
 	}
 
