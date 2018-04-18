@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -15,6 +15,7 @@ import fr.univavignon.rodeo.api.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ISpecieTest {
 
+	private ISpecie specie;
 	private static List<IAnimal> animals;
 
 	protected ISpecie getTestInstance() {
@@ -30,16 +31,19 @@ public class ISpecieTest {
 
 		return specie;
 	}
+	
+	@Before
+	public void setUp() {
+		specie = getTestInstance();
+	}
 
 	@Test
 	public void testGetArea() {
-		final ISpecie specie = getTestInstance();
 		assertEquals(specie.getArea(), 50);
 	}
 
 	@Test
 	public void testGetAnimals() {
-		final ISpecie specie = getTestInstance();
 		assertEquals(specie.getAnimals().equals(animals), true);
 	}
 }

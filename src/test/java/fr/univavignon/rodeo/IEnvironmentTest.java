@@ -6,15 +6,16 @@ import static org.junit.Assert.*;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import fr.univavignon.rodeo.api.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class IEnvironment {
+public class IEnvironmentTest {
 
+	private IEnvironment environment;
 	private static List<ISpecie> species;
 
 	protected IEnvironment getTestInstance() {
@@ -31,15 +32,18 @@ public class IEnvironment {
 		return environment;
 	}
 
+	@Before
+	public void setUp() {
+		environment = getTestInstance();
+	}
+	
 	@Test
 	public void testGetAreas() {
-		final IEnvironment environment = getTestInstance();
 		assertEquals(environment.getAreas(), 5);
 	}
 
 	@Test
 	public void testGetSpecies() {
-		final IEnvironment environment = getTestInstance();
 		assertEquals(environment.getSpecies().equals(species), true);
 	}
 }
