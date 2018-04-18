@@ -22,11 +22,6 @@ public class ISpecieTest {
 		ISpecie specie = mock(ISpecie.class);
 
 		when(specie.getArea()).thenReturn(50);
-
-		animals = new ArrayList<IAnimal>();
-		animals.add(new IAnimalTest().getTestInstance());
-		animals.add(new IAnimalTest().getTestInstance());
-
 		when(specie.getAnimals()).thenReturn(animals);
 
 		return specie;
@@ -34,6 +29,10 @@ public class ISpecieTest {
 	
 	@Before
 	public void setUp() {
+		animals = new ArrayList<IAnimal>();
+		animals.add(new IAnimalTest().getTestInstance());
+		animals.add(new IAnimalTest().getTestInstance());
+		
 		specie = getTestInstance();
 	}
 

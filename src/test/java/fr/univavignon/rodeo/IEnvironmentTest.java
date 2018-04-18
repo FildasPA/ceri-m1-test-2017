@@ -22,11 +22,6 @@ public class IEnvironmentTest {
 		IEnvironment environment = mock(IEnvironment.class);
 
 		when(environment.getAreas()).thenReturn(5);
-
-		species = new ArrayList<ISpecie>();
-		species.add(new ISpecieTest().getTestInstance());
-		species.add(new ISpecieTest().getTestInstance());
-
 		when(environment.getSpecies()).thenReturn(species);
 
 		return environment;
@@ -34,6 +29,10 @@ public class IEnvironmentTest {
 
 	@Before
 	public void setUp() {
+		species = new ArrayList<ISpecie>();
+		species.add(new ISpecieTest().getTestInstance());
+		species.add(new ISpecieTest().getTestInstance());
+		
 		environment = getTestInstance();
 	}
 	
