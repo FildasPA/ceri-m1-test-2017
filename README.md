@@ -1,3 +1,7 @@
+# Julien Boge
+
+Groupe classique
+
 # ceri-m2-test
 
 ## Resources
@@ -16,3 +20,8 @@
 ### External
 
 - [JUnit 5 documentation](http://junit.org/junit5/docs/current/user-guide)
+
+## TODO
+
+- [ ] 
+- [ ] Implémenter toutes les interfaces dans src.main.java.fr.univavignon.rodeo.api sauf SpecieLevel & INamedObject
