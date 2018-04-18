@@ -1,38 +1,35 @@
 package fr.univavignon.rodeo;
 
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.Mockito;
 
 import fr.univavignon.rodeo.api.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class ISpecieTest {
 
 	private ISpecie specie;
 	private static List<IAnimal> animals;
 
 	protected ISpecie getTestInstance() {
-		ISpecie specie = mock(ISpecie.class);
+		ISpecie mock = Mockito.mock(ISpecie.class);
 
-		when(specie.getArea()).thenReturn(50);
-		when(specie.getAnimals()).thenReturn(animals);
+		Mockito.when(mock.getArea()).thenReturn(50);
+		Mockito.when(mock.getAnimals()).thenReturn(animals);
 
-		return specie;
+		return mock;
 	}
-	
+
 	@Before
 	public void setUp() {
 		animals = new ArrayList<IAnimal>();
 		animals.add(new IAnimalTest().getTestInstance());
 		animals.add(new IAnimalTest().getTestInstance());
-		
+
 		specie = getTestInstance();
 	}
 

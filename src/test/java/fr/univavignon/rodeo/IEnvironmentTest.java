@@ -1,30 +1,28 @@
 package fr.univavignon.rodeo;
 
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.Mockito;
 
 import fr.univavignon.rodeo.api.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class IEnvironmentTest {
 
 	private IEnvironment environment;
+
 	private static List<ISpecie> species;
 
 	protected IEnvironment getTestInstance() {
-		IEnvironment environment = mock(IEnvironment.class);
+		IEnvironment mock = Mockito.mock(IEnvironment.class);
 
-		when(environment.getAreas()).thenReturn(5);
-		when(environment.getSpecies()).thenReturn(species);
+		Mockito.when(mock.getAreas()).thenReturn(5);
+		Mockito.when(mock.getSpecies()).thenReturn(species);
 
-		return environment;
+		return mock;
 	}
 
 	@Before
@@ -32,10 +30,10 @@ public class IEnvironmentTest {
 		species = new ArrayList<ISpecie>();
 		species.add(new ISpecieTest().getTestInstance());
 		species.add(new ISpecieTest().getTestInstance());
-		
+
 		environment = getTestInstance();
 	}
-	
+
 	@Test
 	public void testGetAreas() {
 		assertEquals(environment.getAreas(), 5);

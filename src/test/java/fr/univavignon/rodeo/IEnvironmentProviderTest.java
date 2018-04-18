@@ -1,33 +1,31 @@
 package fr.univavignon.rodeo;
 
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.Mockito;
 
 import fr.univavignon.rodeo.api.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class IEnvironmentProviderTest {
 
 	private IEnvironmentProvider environmentProvider;
+
 	private static List<String> environments = Arrays.asList("e1", "e2");
 	private static IEnvironment environment = new IEnvironmentTest().getTestInstance();
 
 	protected IEnvironmentProvider getTestInstance() {
-		IEnvironmentProvider environmentProvider = mock(IEnvironmentProvider.class);
+		IEnvironmentProvider mock = Mockito.mock(IEnvironmentProvider.class);
 
-		when(environmentProvider.getAvailableEnvironments()).thenReturn(environments);
-		when(environmentProvider.getEnvironment("e1")).thenReturn(environment);
+		Mockito.when(mock.getAvailableEnvironments()).thenReturn(environments);
+		Mockito.when(mock.getEnvironment("e1")).thenReturn(environment);
 
-		return environmentProvider;
+		return mock;
 	}
-	
+
 	@Before
 	public void setUp() {
 		environmentProvider = getTestInstance();

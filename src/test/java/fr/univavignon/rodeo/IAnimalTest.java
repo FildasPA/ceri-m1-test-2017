@@ -1,35 +1,32 @@
 package fr.univavignon.rodeo;
 
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 import org.junit.*;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.Mockito;
 
-import fr.univavignon.rodeo.api.IAnimal;
+import fr.univavignon.rodeo.api.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class IAnimalTest {
 
 	private IAnimal animal;
-	
+
 	protected IAnimal getTestInstance() {
-		IAnimal ianimal = mock(IAnimal.class);
+		IAnimal mock = Mockito.mock(IAnimal.class);
 
-        when(ianimal.getXP()).thenReturn(50);
-        when(ianimal.isSecret()).thenReturn(true);
-        when(ianimal.isEndangered()).thenReturn(true);
-        when(ianimal.isBoss()).thenReturn(false);
+		Mockito.when(mock.getXP()).thenReturn(50);
+		Mockito.when(mock.isSecret()).thenReturn(true);
+		Mockito.when(mock.isEndangered()).thenReturn(true);
+		Mockito.when(mock.isBoss()).thenReturn(false);
 
-        return ianimal;
-    }
+		return mock;
+	}
 
 	@Before
 	public void setUp() {
 		animal = getTestInstance();
 	}
-	
+
 	@Test
 	public void testGetXP() {
 		assertEquals(animal.getXP(), 50);
