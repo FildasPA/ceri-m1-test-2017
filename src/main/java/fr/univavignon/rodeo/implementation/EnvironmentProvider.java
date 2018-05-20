@@ -13,18 +13,24 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 		// Parser
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> getAvailableEnvironments() {
-		return (List<String>) environments.keySet();
+		return availableEnvironments;
 	}
 
 	@Override
 	public IEnvironment getEnvironment(String name)
 	throws IllegalArgumentException {
-		if (!environments.containsKey(name))
-			throw new IllegalArgumentException("dds");
-		return environments.get(name);
-	}
+		if(name == null) {
+			throw new IllegalArgumentException();
+		}
 
+		for(IEnvironment e : environments) {
+			if(e.getName() == name) {
+				return e;
+			}
+		}
+
+		throw new IllegalArgumentException();
+	}
 }
