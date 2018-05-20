@@ -3,34 +3,36 @@ package fr.univavignon.rodeo.implementation;
 import fr.univavignon.rodeo.api.*;
 import java.util.Map;
 
-public class GameState implements IGameState {
-
-	private String name;
+public class GameState extends NamedObject implements IGameState {
 
 	private Map<ISpecie, SpecieLevel> levelBySpecie;
 	private Map<ISpecie, Integer> xpBySpecies;
 
-	private String currentEnvironment;
+	private IEnvironment currentEnvironment;
 	private int currentArea;
 
 	private IEnvironmentProvider environmentProvider;
 
 	public GameState(final String name) {
-		this.name = name;
+		super(name);
 		environmentProvider = new EnvironmentProvider();
 	}
 
 	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
 	public void exploreArea() throws IllegalStateException {
+
 		currentArea++;
-		if (currentArea > environmentProvider.getEnvironment(currentEnvironment).getAreas()) {
-			// Déterminer l'environnement suivant
-			currentArea = 0;
+
+		if (currentArea > currentEnvironment.getAreas()) {
+			// Passer à l'environnement suivant, s'il existe
+			int i = environmentProvider.getAvailableEnvironments().indexOf(currentEnvironment);
+			if (i < environmentProvider.getAvailableEnvironments().size()) {
+				// TODO : Déterminer l'environnement suivant
+				String newEnvironmentName = environmentProvider.getAvailableEnvironments().get(i + 1);
+				currentEnvironment = environmentProvider.getEnvironment(newEnvironmentName);
+				currentArea = 0;
+			}
+			
 		}
 	}
 

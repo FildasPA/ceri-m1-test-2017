@@ -2,34 +2,27 @@ package fr.univavignon.rodeo.implementation;
 
 import fr.univavignon.rodeo.api.*;
 import java.util.List;
+import java.util.Map;
 
 public class EnvironmentProvider implements IEnvironmentProvider {
 
-	private List<String> availableEnvironments;
-	private List<IEnvironment> environments;
+	private Map<String, Environment> environments;
 
 	public EnvironmentProvider() {
-		// Parser
+		// omg c'est l'heure de boire, pas le temps de faire le parser
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> getAvailableEnvironments() {
-		return availableEnvironments;
+		return (List<String>) environments.keySet();
 	}
 
 	@Override
 	public IEnvironment getEnvironment(String name)
 	throws IllegalArgumentException {
-		if(name == null) {
-			throw new IllegalArgumentException();
-		}
-
-		for(IEnvironment e : environments) {
-			if(e.getName() == name) {
-				return e;
-			}
-		}
-
-		throw new IllegalArgumentException();
+		if (!environments.containsKey(name))
+			throw new IllegalArgumentException("dds");
+		return environments.get(name);
 	}
 }
