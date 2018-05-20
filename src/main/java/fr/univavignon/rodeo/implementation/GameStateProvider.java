@@ -1,4 +1,6 @@
-package fr.univavignon.rodeo.api;
+package fr.univavignon.rodeo.implementation;
+
+import fr.univavignon.rodeo.api.*;
 
 public class GameStateProvider implements IGameStateProvider {
 

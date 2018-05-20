@@ -1,5 +1,6 @@
-package fr.univavignon.rodeo.api;
+package fr.univavignon.rodeo.implementation;
 
+import fr.univavignon.rodeo.api.*;
 import java.util.Map;
 
 public class GameState implements IGameState {

@@ -1,13 +1,9 @@
-package fr.univavignon.rodeo.api;
+package fr.univavignon.rodeo.implementation;
 
-/**
- * Animal implementation.
- *
- * @author jb
- */
-public class Animal implements IAnimal {
+import fr.univavignon.rodeo.api.*;
 
-	private String name;
+public class Animal extends NamedObject implements IAnimal {
+
 	private int xp;
 	private boolean secret;
 	private boolean endangered;
@@ -15,16 +11,11 @@ public class Animal implements IAnimal {
 
 	public Animal(final String name, final int xp, final boolean secret,
 	              final boolean endangered, final boolean boss) {
-		this.name = name;
+		super(name);
 		this.xp = xp;
 		this.secret = secret;
 		this.endangered = endangered;
 		this.boss = boss;
-	}
-
-	@Override
-	public String getName() {
-		return name;
 	}
 
 	@Override
@@ -46,6 +37,4 @@ public class Animal implements IAnimal {
 	public boolean isBoss() {
 		return boss;
 	}
-
-
 }

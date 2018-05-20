@@ -1,22 +1,17 @@
-package fr.univavignon.rodeo.api;
+package fr.univavignon.rodeo.implementation;
 
+import fr.univavignon.rodeo.api.*;
 import java.util.List;
 
-public class Environment implements IEnvironment {
+public class Environment extends NamedObject implements IEnvironment {
 
-	private String name;
 	private int areas;
 	private List<ISpecie> species;
 
 	public Environment(final String name, final int areas, final List<ISpecie> species) {
-		this.name = name;
+		super(name);
 		this.areas = areas;
 		this.species = species;
-	}
-
-	@Override
-	public String getName() {
-		return name;
 	}
 
 	@Override
@@ -28,5 +23,4 @@ public class Environment implements IEnvironment {
 	public List<ISpecie> getSpecies() {
 		return species;
 	}
-
 }
