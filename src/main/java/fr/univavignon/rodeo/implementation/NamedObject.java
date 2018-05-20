@@ -4,7 +4,7 @@ import fr.univavignon.rodeo.api.*;
 
 public class NamedObject implements INamedObject {
 
-	String name;
+	private String name;
 
 	public NamedObject(final String name) {
 		this.name = name;

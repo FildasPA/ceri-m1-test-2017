@@ -2,12 +2,11 @@ package fr.univavignon.rodeo.implementation;
 
 import fr.univavignon.rodeo.api.*;
 import java.util.List;
-import java.util.Map;
 
 public class EnvironmentProvider implements IEnvironmentProvider {
 
-	List<String> availableEnvironments;
-	List<IEnvironment> environments;
+	private List<String> availableEnvironments;
+	private List<IEnvironment> environments;
 
 	public EnvironmentProvider() {
 		// Parser
