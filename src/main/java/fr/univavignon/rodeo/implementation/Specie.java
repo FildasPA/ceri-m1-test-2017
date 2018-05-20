@@ -23,4 +23,12 @@ public class Specie extends NamedObject implements ISpecie {
 	public List<IAnimal> getAnimals() {
 		return animals;
 	}
+
+	public boolean equals(Object o) {
+		ISpecie s = (ISpecie) o;
+
+		return this.getName() == s.getName() &&
+		       this.getArea() == s.getArea() &&
+		       this.getAnimals().equals(s.getAnimals());
+	}
 }

@@ -14,4 +14,10 @@ public class NamedObject implements INamedObject {
 	public String getName() {
 		return name;
 	}
+
+	public boolean equals(Object o) {
+		INamedObject n = (INamedObject) o;
+
+		return this.getName() == n.getName();
+	}
 }

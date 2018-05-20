@@ -23,4 +23,12 @@ public class Environment extends NamedObject implements IEnvironment {
 	public List<ISpecie> getSpecies() {
 		return species;
 	}
+
+	public boolean equals(Object o) {
+		IEnvironment e = (IEnvironment) o;
+
+		return this.getName() == e.getName() &&
+		       this.getAreas() == e.getAreas() &&
+		       this.getSpecies() == e.getSpecies();
+	}
 }
